@@ -1,0 +1,39 @@
+@model Restaurant
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<h1>Edit @Model.Name</h1>
+
+<form method="post">
+    
+    <input type="hidden" asp-for="@Model.Id"/>
+    
+    <div>
+        <label asp-for="@Model.Name"></label>
+        <input asp-for="@Model.Name"/>
+        <span asp-validation-for="@Model.Name"></span>
+    </div>
+
+    <div>
+        <label asp-for="@Model.Cuisine"></label>
+        <select asp-for="@Model.Cuisine" asp-items="@Html.GetEnumSelectList<CuisineType>()"></select>
+        <span asp-validation-for="@Model.Cuisine"></span>
+    </div>
+
+    <input type="submit" name="save" value="Save"/>
+</form>
+
+
+@*
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<h1>@Model.Name</h1>
+<div>Id: @Model.Id</div>
+<div>Cuisine: @Model.Cuisine</div>
+<a asp-action="Index" asp-controller="Home">Home</a>
+*@

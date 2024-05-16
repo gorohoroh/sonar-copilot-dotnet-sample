@@ -1,0 +1,25 @@
+@model Restaurant
+
+<section class="panel panel-default">
+    <h3 class="panel-heading">@Model.Name</h3>
+    <div class="panel-body">Cuisine: @Model.Cuisine</div>
+    <div class="panel-body">@if (Model.Reviews == null || Model.Reviews.Count == 0)
+                            {
+                                <span>No reviews so far</span>
+                            }
+                            else
+                            {
+                                foreach (var review in Model.Reviews)
+                                {
+                                    <span>@review.Rating: @review.ReviewText</span>
+                                } 
+                            }
+    </div>
+    <div class="panel-footer">
+        <a class="btn btn-default" asp-action="Details" asp-route-id="@Model.Id">More</a>
+        <a class="btn btn-default" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        <a class="btn btn-default" asp-action="Review" asp-route-id="@Model.Id">Review</a>
+    </div>
+    
+</section>
+
